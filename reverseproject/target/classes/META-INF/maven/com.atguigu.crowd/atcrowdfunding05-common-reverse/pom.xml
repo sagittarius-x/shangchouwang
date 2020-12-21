@@ -6,14 +6,6 @@
 	<artifactId>atcrowdfunding05-common-reverse</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.mybatis</groupId>
-			<artifactId>mybatis</artifactId>
-			<version>3.2.8</version>
-		</dependency>
-	</dependencies>
-
 	<!-- 控制maven在构建过程中的相关配置 -->
 	<build>
 

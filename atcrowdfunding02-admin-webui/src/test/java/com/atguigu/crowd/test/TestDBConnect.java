@@ -15,15 +15,26 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.atguigu.crowd.entity.Admin;
 import com.atguigu.crowd.mapper.AdminMapper;
+import com.atguigu.crowd.service.api.AdminService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:spring-persist-mybatis.xml"})
+@ContextConfiguration(locations = {"classpath:spring-persist-mybatis.xml", 
+		"classpath:spring-persist-tx.xml"})
 public class TestDBConnect {
 	@Autowired
 	private DataSource dataSource;
 	
 	@Autowired
 	private AdminMapper adminMapper;
+	
+	@Autowired
+	private AdminService adminService;
+	
+	@Test
+	public void testTx() {
+		Admin admin = new Admin(null,"jerry","123123","桃木","tom@qq.com",null);
+		adminService.saveAdmin(admin);
+	}
 	
 	@Test
 	public void testLog() {

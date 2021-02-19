@@ -31,4 +31,6 @@
 		</property>
 	</bean>
 	
+	<mvc:view-controller path="/xxx/xxx.html" view-name="target"/>
+	
 </beans>

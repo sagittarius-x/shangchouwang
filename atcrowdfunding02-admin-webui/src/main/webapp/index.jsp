@@ -15,7 +15,28 @@
 				"data":{
 					"array" : [5,8,10]
 				},
-				"dataTYpe":"Text",
+				"dataType":"Text",
+				"success": function(reponse){
+					
+				},
+				"error": function(response){
+					
+				}
+			});
+		});
+	});
+	
+	$(function(){
+		$("#btn2").click(function(){
+			var array = [5,8,12];
+			
+			var requestBody = JSON.stringify(array);
+			$.ajax({
+				"url":"send/array/one.html",
+				"type":"post",
+				"data": requestBody,
+				"contentType": "application/json;charset=UTF-8",
+				"dataType":"Text",
 				"success": function(reponse){
 					
 				},
@@ -32,5 +53,6 @@
 <br/>
 
 <button id="btn1">Send [5,8,10] One method</button>
+<button id="btn2">Send [5,8,10] second method</button>
 </body>
 </html>

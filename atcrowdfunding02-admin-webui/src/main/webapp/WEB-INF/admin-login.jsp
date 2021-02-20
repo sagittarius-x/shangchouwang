@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="css/font-awesome.min.css">
 <link rel="stylesheet" href="css/login.css">
 <script src="jquery/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="layer/layer.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <style>
 </style>

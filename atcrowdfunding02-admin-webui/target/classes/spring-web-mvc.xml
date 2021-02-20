@@ -32,5 +32,6 @@
 	</bean>
 	
 	<mvc:view-controller path="/xxx/xxx.html" view-name="target"/>
+	<mvc:view-controller path="/admin/to/login/page.html" view-name="admin-login"/>
 	
 </beans>

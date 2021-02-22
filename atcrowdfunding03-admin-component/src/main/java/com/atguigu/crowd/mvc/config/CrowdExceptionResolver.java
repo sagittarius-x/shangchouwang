@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.atguigu.crowd.constant.CrowdConstant;
+import com.atguigu.crowd.exception.LoginFailedException;
 import com.atguigu.crowd.util.CrowdUtil;
 import com.atguigu.crowd.util.ResultEntity;
 import com.google.gson.Gson;
@@ -18,6 +19,13 @@ import com.google.gson.Gson;
 @ControllerAdvice
 public class CrowdExceptionResolver {
 	// @ExceptionHandler将一个具体的异常类型和一个方法关联起来
+	@ExceptionHandler(value = LoginFailedException.class)
+	public ModelAndView resolveLoginFailedException(LoginFailedException exception, HttpServletRequest request,
+			HttpServletResponse response) throws IOException{
+
+		String viewName = "admin-login";
+		return commonResolve(viewName, exception, request, response);
+	}
 
 	@ExceptionHandler(value = NullPointerException.class)
 	public ModelAndView resolveNullPointerException(NullPointerException exception, HttpServletRequest request,

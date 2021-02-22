@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
 encoding//src/main/java/com/atguigu/crowd/constant/CrowdConstant.java=UTF-8
+encoding//src/main/java/com/atguigu/crowd/exception/LoginFailedException.java=UTF-8
 encoding//src/main/java/com/atguigu/crowd/util/CrowdUtil.java=UTF-8
 encoding//src/main/java/com/atguigu/crowd/util/ResultEntity.java=UTF-8

@@ -17,6 +17,8 @@ public interface AdminMapper {
     int insert(Admin record);
 
     int insertSelective(Admin record);
+    
+    List<Admin> selectAdminByKeyword(String keyword);
 
     List<Admin> selectByExample(AdminExample example);
 

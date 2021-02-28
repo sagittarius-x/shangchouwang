@@ -13,13 +13,15 @@ import com.atguigu.crowd.entity.AdminExample.Criteria;
 import com.atguigu.crowd.exception.LoginFailedException;
 import com.atguigu.crowd.mapper.AdminMapper;
 import com.atguigu.crowd.util.CrowdUtil;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 
 @Service
 public class AdminServiceImpl implements com.atguigu.crowd.service.api.AdminService {
-	
+
 	@Autowired
 	private AdminMapper adminMapper;
-	
+
 	@Override
 	public void saveAdmin(Admin admin) {
 		adminMapper.insert(admin);
@@ -28,7 +30,7 @@ public class AdminServiceImpl implements com.atguigu.crowd.service.api.AdminServ
 
 	@Override
 	public List<Admin> getAll() {
-		return adminMapper.selectByExample(new AdminExample());		
+		return adminMapper.selectByExample(new AdminExample());
 	}
 
 	@Override
@@ -40,25 +42,34 @@ public class AdminServiceImpl implements com.atguigu.crowd.service.api.AdminServ
 		if (list == null || list.size() == 0) {
 			throw new LoginFailedException(CrowdConstant.MESSAGE_LOGIN_FAILED);
 		}
-		
+
 		if (list.size() > 1) {
 			throw new RuntimeException(CrowdConstant.MESSAGE_SYSTEM_ERROR_LOGIN_ACCT_NOT_UNIQUE);
 		}
-		
+
 		Admin admin = list.get(0);
 		if (admin == null) {
 			throw new LoginFailedException(CrowdConstant.MESSAGE_LOGIN_FAILED);
 		}
-		
+
 		String userPswdDB = admin.getUserPswd().toUpperCase();
-		
+
 		String userPswdForm = CrowdUtil.md5(userPswd);
-		
+
 		if (!Objects.equals(userPswdDB, userPswdForm)) {
 			throw new LoginFailedException(CrowdConstant.MESSAGE_LOGIN_FAILED);
 		}
-		
+
 		return admin;
+	}
+
+	@Override
+	public PageInfo<Admin> getPageInfo(String keyword, Integer pageNum, Integer pageSize) {
+		PageHelper.startPage(pageNum, pageSize);
+
+		List<Admin> list = adminMapper.selectAdminByKeyword(keyword);
+
+		return new PageInfo<>(list);
 	}
 
 }

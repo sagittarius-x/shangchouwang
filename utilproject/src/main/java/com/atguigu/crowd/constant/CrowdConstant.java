@@ -9,4 +9,5 @@ public class CrowdConstant {
 	public static final String ATTR_NAME_EXCEPTION = "exception";
 	public static final String ATTR_NAME_LOGIN_ADMIN = "LoginAdmin";
 	public static final String MESSAGE_SYSTEM_ERROR_LOGIN_ACCT_NOT_UNIQUE = "账号不唯一";
+	public static final String ATTR_NAME_PAGE_INFO = "pageInfo";
 }

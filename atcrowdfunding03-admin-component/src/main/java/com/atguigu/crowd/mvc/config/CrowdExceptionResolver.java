@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.atguigu.crowd.constant.CrowdConstant;
+import com.atguigu.crowd.exception.LoginAcctAlreadyInUseException;
 import com.atguigu.crowd.exception.LoginFailedException;
 import com.atguigu.crowd.util.CrowdUtil;
 import com.atguigu.crowd.util.ResultEntity;
@@ -46,7 +47,6 @@ public class CrowdExceptionResolver {
 			try {
 				response.getWriter().write(json);
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			return null;
@@ -56,5 +56,13 @@ public class CrowdExceptionResolver {
 		modelAndView.addObject(CrowdConstant.ATTR_NAME_EXCEPTION, exception);
 		modelAndView.setViewName(viewName);
 		return modelAndView;
+	}
+	
+	@ExceptionHandler(value = LoginAcctAlreadyInUseException.class)
+	public ModelAndView resolveLoginFailedException(LoginAcctAlreadyInUseException exception, HttpServletRequest request,
+			HttpServletResponse response) throws IOException{
+
+		String viewName = "admin-add";
+		return commonResolve(viewName, exception, request, response);
 	}
 }

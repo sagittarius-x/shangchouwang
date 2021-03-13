@@ -19,4 +19,6 @@ public interface AdminService {
 	public Admin getAdminById(Integer adminId);
 
 	public void update(Admin admin);
+
+	public void saveRelationship(Integer adminId, List<Integer> roleIdList);
 }

@@ -118,4 +118,13 @@ public class AdminServiceImpl implements com.atguigu.crowd.service.api.AdminServ
 			}
 		}
 	}
+
+	@Override
+	public void saveRelationship(Integer adminId, List<Integer> roleIdList) {
+		adminMapper.deleteRelationship(adminId);
+		
+		if (roleIdList != null && roleIdList.size() > 0) {
+			adminMapper.insertRelationship(adminId,roleIdList);
+		}
+	}
 }
